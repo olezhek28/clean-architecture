@@ -2,10 +2,13 @@ syntax = "proto3";
 
 package user_v1;
 
+import "google/protobuf/timestamp.proto";
+
 option go_package = "github.com/olezhek28/clean-architecture/pkg/user_v1;user_v1";
 
 service UserV1 {
   rpc Create(CreateRequest) returns (CreateResponse);
+  rpc Get(GetRequest) returns (GetResponse);
 }
 
 message UserInfo {
@@ -14,10 +17,25 @@ message UserInfo {
   int64 age = 3;
 }
 
+message User {
+  string uuid = 1;
+  UserInfo info = 2;
+  google.protobuf.Timestamp created_at = 3;
+  google.protobuf.Timestamp updated_at = 4;
+}
+
 message CreateRequest {
   UserInfo info = 1;
 }
 
 message CreateResponse {
   string uuid = 1;
+}
+
+message GetRequest {
+  string uuid = 1;
+}
+
+message GetResponse {
+  User user = 1;
 }

@@ -1,4 +1,4 @@
-package note
+package user
 
 import (
 	"github.com/olezhek28/clean-architecture/internal/repository"

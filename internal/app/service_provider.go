@@ -8,7 +8,7 @@ import (
 	"github.com/olezhek28/clean-architecture/internal/repository"
 	userRepository "github.com/olezhek28/clean-architecture/internal/repository/user"
 	"github.com/olezhek28/clean-architecture/internal/service"
-	userService "github.com/olezhek28/clean-architecture/internal/service/note"
+	userService "github.com/olezhek28/clean-architecture/internal/service/user"
 )
 
 type serviceProvider struct {
@@ -56,7 +56,7 @@ func (s *serviceProvider) UserService() service.UserService {
 	return s.userService
 }
 
-func (s *serviceProvider) NoteImpl() *user.Implementation {
+func (s *serviceProvider) UserImpl() *user.Implementation {
 	if s.userImpl == nil {
 		s.userImpl = user.NewImplementation(s.UserService())
 	}

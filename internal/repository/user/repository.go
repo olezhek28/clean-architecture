@@ -36,3 +36,15 @@ func (r *repository) Create(_ context.Context, userUUID string, info *model.User
 
 	return nil
 }
+
+func (r *repository) Get(_ context.Context, uuid string) (*model.User, error) {
+	r.m.RLock()
+	defer r.m.RUnlock()
+
+	user, ok := r.data[uuid]
+	if !ok {
+		return nil, nil
+	}
+
+	return converter.ToUserFromRepo(user), nil
+}
