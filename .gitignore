@@ -20,3 +20,5 @@
 # Go workspace file
 go.work
 /bin/
+.idea
+.DS_Store
