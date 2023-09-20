@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package user_v1;
+
+option go_package = "github.com/olezhek28/clean-architecture/pkg/user_v1;user_v1";
+
+service UserV1 {
+  rpc Create(CreateRequest) returns (CreateResponse);
+}
+
+message UserInfo {
+  string first_name = 1;
+  string last_name = 2;
+  int64 age = 3;
+}
+
+message CreateRequest {
+  UserInfo info = 1;
+}
+
+message CreateResponse {
+  string uuid = 1;
+}
